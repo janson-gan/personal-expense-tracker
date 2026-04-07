@@ -3,7 +3,7 @@ import express, { Application, Request, Response } from "express";
 const app: Application = express();
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Finally solve the import issue... ");
+  res.send("Test 123456");
 });
 
 export default app;
