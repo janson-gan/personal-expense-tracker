@@ -1,11 +1,9 @@
 import app from "./app";
-import dotenv from "dotenv";
+import config from "./config/config";
 import logger from "./utils/logger";
 
-dotenv.config();
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  logger.info(`Backend Server started listening at http://localhost:${PORT}`);
+app.listen(config.PORT, () => {
+  logger.info(
+    `Backend Server started listening at http://localhost:${config.PORT}`,
+  );
 });
