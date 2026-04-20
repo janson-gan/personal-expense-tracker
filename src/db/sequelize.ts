@@ -1,7 +1,7 @@
 import { Sequelize } from '@sequelize/core';
-import {PostgresDialect} from '@sequelize/postgres'
+import { PostgresDialect } from '@sequelize/postgres';
 import logger from '../utils/logger';
-import {Student} from '../models';
+import { Student } from '../models';
 
 const sequelize = new Sequelize({
   dialect: PostgresDialect,
