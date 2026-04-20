@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
-import health from "./routes/routes";
+import health from "./routes/health.route";
+import students from './routes/student.route'
 import httpLogger from "./middlewares/http.logger";
 import { errorHandler } from "./middlewares/error.middleware";
 import notFoundHandler from "./middlewares/notFound.middleware";
@@ -28,6 +29,9 @@ app.use(httpLogger);
 
 // Health check routes
 app.use("/api/v1", health);
+
+// Student routes
+app.use('/api/v1', students)
 
 
 // Error handling middleware
