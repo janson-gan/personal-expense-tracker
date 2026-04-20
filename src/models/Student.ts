@@ -1,64 +1,24 @@
-// import {
-//   Column,
-//   DataType,
-//   Default,
-//   PrimaryKey,
-//   Table,
-//   Unique,
-//   Model
-// } from 'sequelize-typescript';
-// import { CreationOptional } from 'sequelize';
-
-// @Table({
-//   tableName: 'students',
-//   timestamps: true,
-// })
-// export class Student extends Model<Student> {
-//   @PrimaryKey
-//   @Default(DataType.UUID)
-//   @Column({
-//     type: DataType.UUID,
-//     allowNull: false,
-//   })
-//   declare student_id: CreationOptional<string>;
-
-//   @Column({
-//     allowNull: false,
-//     type: DataType.STRING,
-//   })
-//   declare name: string;
-
-//   @Unique
-//   @Column({
-//     allowNull: false,
-//     type: DataType.STRING,
-//   })
-//   declare email: string;
-
-//   @Column(DataType.STRING)
-//   declare phone: string;
-// }
-
 import {
-  Sequelize,
   DataTypes,
   Model,
   InferAttributes,
   InferCreationAttributes,
   CreationOptional,
-  Col,
+  sql,
 } from '@sequelize/core';
 import {
   Attribute,
   PrimaryKey,
-  AutoIncrement,
   NotNull,
   AllowNull,
   Default,
   Unique,
+  Table,
 } from '@sequelize/core/decorators-legacy';
-import { v4 as uuidV4 } from 'uuid';
 
+@Table({
+  tableName: 'students'
+})
 export class Student extends Model<
   InferAttributes<Student>,
   InferCreationAttributes<Student>
@@ -66,7 +26,7 @@ export class Student extends Model<
   @Attribute(DataTypes.UUID)
   @PrimaryKey
   @NotNull
-  @Default(() => uuidV4)
+  @Default(sql.uuidV4)
   declare student_id: CreationOptional<string>;
 
   @Attribute(DataTypes.STRING)
@@ -80,13 +40,9 @@ export class Student extends Model<
 
   @Attribute(DataTypes.STRING)
   @AllowNull
-  declare phone: string;
+  declare phone: string | null;
 
-  @Attribute(DataTypes.DATE)
-  @Default(DataTypes.NOW)
-  declare created_at: CreationOptional<Date>;
-
-  @Attribute(DataTypes.DATE)
-  @Default(DataTypes.NOW)
-  declare updated_at: CreationOptional<Date>;
+  @Attribute(DataTypes.STRING)
+  @NotNull
+  declare address: string
 }
