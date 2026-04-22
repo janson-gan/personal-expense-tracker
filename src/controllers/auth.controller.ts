@@ -34,14 +34,3 @@ export const register = asyncHandler(async (req: Request, res: Response) => {
     data: { name: newUser.name, email: newUser.email },
   });
 });
-
-// const reqBody = registerSchema.safeParse(req.body);
-// if (reqBody.success) {
-//   const newUser = await User.create(reqBody.data);
-//   res.status(201).json({ success: true, data: newUser });
-// } else {
-//   throw new ApiError({
-//     statusCode: 400,
-//     message: fromZodError(reqBody.error).message,
-//   });
-// }
