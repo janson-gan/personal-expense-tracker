@@ -1,7 +1,7 @@
 import { Sequelize } from '@sequelize/core';
 import { PostgresDialect } from '@sequelize/postgres';
 import logger from '../utils/logger';
-import { Student } from '../models';
+import { User } from '../models';
 
 const sequelize = new Sequelize({
   dialect: PostgresDialect,
@@ -10,7 +10,7 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
-  models: [Student],
+  models: [User],
 });
 
 export const dbConnection = async () => {
