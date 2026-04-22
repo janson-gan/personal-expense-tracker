@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import asyncHandler from '../utils/asyncHandler';
 import { User } from '../models';
-import ApiError from '../errors/ApiError';
+import ApiError from '../utils/ApiError';
 import { registerSchema } from '../validations/validation';
 import { fromZodError } from 'zod-validation-error';
 import bcrypt from 'bcrypt';
