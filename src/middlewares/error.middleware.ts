@@ -1,14 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
-import ApiError from '../errors/ApiError';
+import ApiError from '../utils/ApiError';
 import logger from '../utils/logger';
 
-// Error handling
+// HTTP error handling
 export const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
+  // To log the error to the terminal
   logger.error('Error', err);
   if (err instanceof ApiError) {
     res.status(err.statusCode).json({
