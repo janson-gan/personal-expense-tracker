@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import health from "./routes/health.route";
-import students from './routes/student.route'
+import register from './routes/auth.route'
 import httpLogger from "./middlewares/http.logger";
 import { errorHandler } from "./middlewares/error.middleware";
 import notFoundHandler from "./middlewares/notFound.middleware";
@@ -18,7 +18,7 @@ app.use(
     credentials: true,
   }),
 );
-app.use(rateLimiter);
+// app.use(rateLimiter);
 
 // Express middleware
 app.use(express.json());
@@ -31,7 +31,7 @@ app.use(httpLogger);
 app.use("/api/v1", health);
 
 // Student routes
-app.use('/api/v1', students)
+app.use('/api/v1/auth', register)
 
 
 // Error handling middleware
